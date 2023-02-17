@@ -14,11 +14,21 @@ architectures:
 
 confinement: strict
 
+plugs:
+  dot-config-woke:
+    interface: personal-files
+    read:
+      - $HOME/.config/woke.yaml
+      - $HOME/.woke.yaml
+
 apps:
   woke:
     command: bin/woke
     plugs:
       - home
+      - dot-config-woke
+      - network
+
 parts:
   woke:
     plugin: go
@@ -28,3 +38,4 @@ parts:
       snapcraftctl pull
       snapcraftctl set-version \
       "$(git describe --long --tags --always --match=v*.*.* | sed 's/v//')"
+    
