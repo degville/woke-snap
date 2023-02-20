@@ -19,7 +19,9 @@ plugs:
     interface: personal-files
     read:
       - $HOME/.config/woke.yaml
+      - $HOME/.config/woke.yml
       - $HOME/.woke.yaml
+      - $HOME/.woke.yml
 
 apps:
   woke:
