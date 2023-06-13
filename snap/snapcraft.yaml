@@ -30,6 +30,7 @@ apps:
       - home
       - dot-config-woke
       - network
+      - removable-media
 
 parts:
   woke:
