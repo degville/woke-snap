@@ -8,11 +8,10 @@ description: |
       suggests replacing them with more inclusive alternatives.
 adopt-info: woke
 grade: stable
-base: core20
-architectures:
-  - build-on: [arm64, armhf, amd64]
+base: core26
 
 confinement: strict
+compression: lzo
 
 plugs:
   dot-config-woke:
@@ -37,8 +36,9 @@ parts:
     plugin: go
     source-type: git
     source: https://github.com/get-woke/woke 
+    build-snaps:
+      - go/latest/stable
     override-pull: |
-      snapcraftctl pull
-      snapcraftctl set-version \
-      "$(git describe --long --tags --always --match=v*.*.* | sed 's/v//')"
+      craftctl default
+      craftctl set version="$(git describe --long --tags --always --match=v*.*.* | sed 's/v//')"
     
